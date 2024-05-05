@@ -23,20 +23,20 @@ radius = 3.0
 radius = 3.0
 height = 6.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkqw7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqbqt"]
 transparency = 1
 albedo_color = Color(0.7, 0.2, 0.2, 0.75)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_4ypvv"]
-material = SubResource("StandardMaterial3D_nkqw7")
+[sub_resource type="PlaneMesh" id="PlaneMesh_886cp"]
+material = SubResource("StandardMaterial3D_eqbqt")
 size = Vector2(10, 10)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hg3j"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1tj2"]
 transparency = 1
 albedo_color = Color(0.7, 0.2, 0.2, 0.75)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_pp0fv"]
-material = SubResource("StandardMaterial3D_7hg3j")
+[sub_resource type="PlaneMesh" id="PlaneMesh_7c14s"]
+material = SubResource("StandardMaterial3D_x1tj2")
 size = Vector2(10, 10)
 
 [node name="HeightmapGeneratorExample" type="Node3D"]
@@ -96,9 +96,9 @@ transform = Transform3D(-0.541162, -0.774299, 0.328032, -0.0357188, 0.410901, 0.
 script = ExtResource("1_m07f7")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Heightmap Generator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.47171, 0)
-mesh = SubResource("PlaneMesh_4ypvv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.65385, 0)
+mesh = SubResource("PlaneMesh_886cp")
 
 [node name="Floor" type="MeshInstance3D" parent="Heightmap Generator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12755, 0)
-mesh = SubResource("PlaneMesh_pp0fv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.233, 0)
+mesh = SubResource("PlaneMesh_7c14s")

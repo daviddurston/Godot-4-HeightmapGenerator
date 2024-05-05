@@ -1,5 +1,5 @@
 @tool
-extends Node
+extends Node3D
 
 @export var resolution := 1024
 @export var save_path := "res://addons/heightmap_generator/output/heightmap.png"
@@ -8,7 +8,7 @@ extends Node
 var ceiling
 var floor
 
-
+	
 func _ready() -> void:
 	if get_child_count() == 0: # prevent duplicating children on project reloads
 		ceiling = createPlane("Ceiling", 5)
@@ -20,7 +20,19 @@ func _ready() -> void:
 	else:
 		print("Unexpected number of children found! Expected 0 or 2, found: %s" % get_child_count())
 		return
-		
+
+
+## Changing the scale of the parent node will have no effect on the heightmap
+## bounds, and only confuse users, so we'll reset it to 1 if it changes.
+var _check_delay := 1.0
+func _process(delta):
+	_check_delay += delta
+	if _check_delay > 1.0:
+		_check_delay = 0
+		if scale != Vector3.ONE:
+			push_warning("Scale of Heightmap Generator parent node changed. This " +
+					"should not be done. Resetting to 1.")
+			scale = Vector3.ONE
 
 
 func createPlane(name, height) -> MeshInstance3D:
@@ -75,6 +87,8 @@ func generate_heightmap() -> void:
 		print("Floor: %s" % str(floor.global_position.y))
 		print("Ray length: %s" % str(ray_length))
 
+	# Iterate over the grid and cast rays downward,
+	#setting pixel values based on height
 	var heightmap = Image.create(resolution, resolution, false, Image.FORMAT_RGBA8)
 	var space_state = ceiling.get_world_3d().direct_space_state
 	for x in range(resolution):
