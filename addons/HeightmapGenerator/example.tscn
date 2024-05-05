@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://btegvbt6sy6am"]
+
+[ext_resource type="Script" path="res://addons/heightmapgenerator/generator.gd" id="1_khkyn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_640ig"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3dxx"]
+albedo_color = Color(0.294118, 0.337255, 0.227451, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vkuos"]
+data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0, -5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p73gp"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j38li"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qntlq"]
+radius = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_wr8y6"]
+radius = 3.0
+height = 6.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v1ha"]
+transparency = 1
+albedo_color = Color(0.7, 0.2, 0.2, 0.75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nrxkc"]
+material = SubResource("StandardMaterial3D_7v1ha")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8312p"]
+transparency = 1
+albedo_color = Color(0.7, 0.2, 0.2, 0.75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y4ljh"]
+material = SubResource("StandardMaterial3D_8312p")
+size = Vector2(10, 10)
+
+[node name="HeightmapGeneratorExample" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="Environment"]
+mesh = SubResource("PlaneMesh_640ig")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_x3dxx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vkuos")
+
+[node name="Object" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.98253, 0, -3.49818, 0, 2.05142, 0, 0.53072, 0, 6.47623, -1.52464, 1.00451, -0.167266)
+mesh = SubResource("BoxMesh_p73gp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Object"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Object/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j38li")
+
+[node name="Object2" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.98253, 0, -3.49818, 0, 1.31705, 0, 0.53072, 0, 6.47623, 0.767519, 0.556485, 0.604103)
+mesh = SubResource("BoxMesh_p73gp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Object2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Object2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j38li")
+
+[node name="Object3" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.917523, 0.155988, 7.68145, -2.79802e-08, 0.453201, -3.27, -1.88546, 0.0759088, 3.73804, 0.0655066, 1.5064, 2.44791)
+mesh = SubResource("BoxMesh_p73gp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Object3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Object3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j38li")
+
+[node name="Object4" type="RigidBody3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.62421, -0.137259, -3.50009)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Object4"]
+shape = SubResource("SphereShape3D_qntlq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Object4/CollisionShape3D"]
+mesh = SubResource("SphereMesh_wr8y6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.541162, -0.774299, 0.328032, -0.0357188, 0.410901, 0.91098, -0.840159, 0.481271, -0.250021, -1.17793, 10.2136, 37.4121)
+
+[node name="Heightmap Generator" type="Node3D" parent="."]
+script = ExtResource("1_khkyn")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Heightmap Generator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.59427, 0)
+mesh = SubResource("PlaneMesh_nrxkc")
+
+[node name="Floor" type="MeshInstance3D" parent="Heightmap Generator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.153828, 0)
+mesh = SubResource("PlaneMesh_y4ljh")
