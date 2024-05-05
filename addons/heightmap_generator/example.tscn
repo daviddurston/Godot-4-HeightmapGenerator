@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://btegvbt6sy6am"]
 
-[ext_resource type="Script" path="res://addons/HeightmapGenerator/generator.gd" id="1_m07f7"]
+[ext_resource type="Script" path="res://addons/heightmap_generator/generator.gd" id="1_m07f7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_640ig"]
 size = Vector2(10, 10)

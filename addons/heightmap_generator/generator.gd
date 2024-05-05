@@ -2,8 +2,9 @@
 extends Node
 
 @export var resolution := 1024
-@export var save_path := "res://addons/HeightmapGenerator/output/heightmap.png"
+@export var save_path := "res://addons/heightmap_generator/output/heightmap.png"
 @export var debug_logging := false
+
 var ceiling
 var floor
 
@@ -52,7 +53,7 @@ func generate_heightmap() -> void:
 	assert(ceiling.scale.x == ceiling.scale.z, "Ceiling scale.x must equal scale.z!")
 
 	var bounds = ceiling.get_aabb()
-	var celing_y = ceiling.global_position.y
+	var ceiling_y = ceiling.global_position.y
 
 	# Ensure we are taking the ceiling's scale into account if it has changed
 	var scale = ceiling.scale.x
@@ -80,7 +81,7 @@ func generate_heightmap() -> void:
 		var cur_x = start_pos.x + offset + x * step_size
 		for z in range(resolution):
 			var cur_z = start_pos.z + offset + z * step_size
-			var ray_origin = Vector3(cur_x, celing_y, cur_z)
+			var ray_origin = Vector3(cur_x, ceiling_y, cur_z)
 			var ray_direction = Vector3(0, -1, 0)
 
 			var ray = PhysicsRayQueryParameters3D.create(ray_origin, ray_origin + ray_direction * ray_length)
@@ -88,7 +89,7 @@ func generate_heightmap() -> void:
 
 			if collision:
 				# print("Collision at (%s, %s) at height %s" % [x, z, height])
-				var height = (celing_y - collision.position.y) / ray_length
+				var height = (ceiling_y - collision.position.y) / ray_length
 				heightmap.set_pixel(x, z, Color(1-height, 1-height, 1-height))
 			else:
 				heightmap.set_pixel(x, z, Color(0, 0, 0))

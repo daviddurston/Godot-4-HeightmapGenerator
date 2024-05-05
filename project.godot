@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="HeightmapFromTerrain"
+config/name="HeightmapGenerator"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/HeightmapGenerator/plugin.cfg")
+enabled=PackedStringArray("res://addons/heightmap_generator/plugin.cfg")
