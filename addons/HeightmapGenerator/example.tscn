@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://btegvbt6sy6am"]
 
-[ext_resource type="Script" path="res://addons/heightmapgenerator/generator.gd" id="1_khkyn"]
+[ext_resource type="Script" path="res://addons/HeightmapGenerator/generator.gd" id="1_m07f7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_640ig"]
 size = Vector2(10, 10)
@@ -23,20 +23,20 @@ radius = 3.0
 radius = 3.0
 height = 6.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v1ha"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkqw7"]
 transparency = 1
 albedo_color = Color(0.7, 0.2, 0.2, 0.75)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_nrxkc"]
-material = SubResource("StandardMaterial3D_7v1ha")
+[sub_resource type="PlaneMesh" id="PlaneMesh_4ypvv"]
+material = SubResource("StandardMaterial3D_nkqw7")
 size = Vector2(10, 10)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8312p"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hg3j"]
 transparency = 1
 albedo_color = Color(0.7, 0.2, 0.2, 0.75)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_y4ljh"]
-material = SubResource("StandardMaterial3D_8312p")
+[sub_resource type="PlaneMesh" id="PlaneMesh_pp0fv"]
+material = SubResource("StandardMaterial3D_7hg3j")
 size = Vector2(10, 10)
 
 [node name="HeightmapGeneratorExample" type="Node3D"]
@@ -93,12 +93,12 @@ mesh = SubResource("SphereMesh_wr8y6")
 transform = Transform3D(-0.541162, -0.774299, 0.328032, -0.0357188, 0.410901, 0.91098, -0.840159, 0.481271, -0.250021, -1.17793, 10.2136, 37.4121)
 
 [node name="Heightmap Generator" type="Node3D" parent="."]
-script = ExtResource("1_khkyn")
+script = ExtResource("1_m07f7")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Heightmap Generator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.59427, 0)
-mesh = SubResource("PlaneMesh_nrxkc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.47171, 0)
+mesh = SubResource("PlaneMesh_4ypvv")
 
 [node name="Floor" type="MeshInstance3D" parent="Heightmap Generator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.153828, 0)
-mesh = SubResource("PlaneMesh_y4ljh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12755, 0)
+mesh = SubResource("PlaneMesh_pp0fv")
