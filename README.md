@@ -1,10 +1,9 @@
 # Godot-4-HeightmapGenerator
 Generates a heightmap texture from collidable meshes in a 3D scene. 
-
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-![Properly positioned planes](images/planes.png)
 ![Generated heightmap](images/heightmap.png)
+![Properly positioned planes](images/planes.png)
 ![Heightmap used on terrain surface](images/used_heightmap.png)
 
 
@@ -37,9 +36,11 @@ nodes, a Floor and a Ceiling, both mesh planes.
 6. Resize the Ceiling plane using the mesh's size properties or by scaling it.
 Note that both the size (x and y) and scale (x and z) must be square, since
 we are generating a square image.
+
 ![Resizing the Ceiling plane](images/resizing.png)
 7. Click on the parent node once again and set your desired image resolution
 and save path (default is the addon's output/ folder).
+
 ![Generating the heightmap](images/exporting.png)
 
 
