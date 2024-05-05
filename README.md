@@ -38,6 +38,7 @@ Note that both the size (x and y) and scale (x and z) must be square, since
 we are generating a square image.
 
 ![Resizing the Ceiling plane](images/resizing.png)
+
 7. Click on the parent node once again and set your desired image resolution
 and save path (default is the addon's output/ folder).
 
