@@ -12,6 +12,14 @@ func _ready() -> void:
 	if get_child_count() == 0: # prevent duplicating children on project reloads
 		ceiling = createPlane("Ceiling", 5)
 		floor = createPlane("Floor", -5)
+	elif get_child_count() == 2: # get preexisting children
+		var ceiling_index = 0 if get_child(0).name == "Ceiling" else 1
+		ceiling = get_child(ceiling_index)
+		floor = get_child(1 - ceiling_index)
+	else:
+		print("Unexpected number of children found! Expected 0 or 2, found: %s" % get_child_count())
+		return
+		
 
 
 func createPlane(name, height) -> MeshInstance3D:
